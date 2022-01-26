@@ -10,6 +10,8 @@ import FavoriteMovieList from './components/FavoriteMovieList';
 
 import AddMovieForm from './components/AddMovieForm';
 
+import EditMovieForm from './components/EditMovieForm';
+
 import axios from 'axios';
 
 const App = (props) => {
@@ -17,7 +19,7 @@ const App = (props) => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(()=>{
-    axios.get('http://localhost:5001/api/movies')
+    axios.get('http://localhost:9000/api/movies')
       .then(res => {
         setMovies(res.data);
       })
@@ -31,7 +33,7 @@ const App = (props) => {
   }
 
   const addToFavorites = (movie) => {
-    
+    setFavoriteMovies(movies.filter(item => (item.id !== Number(id))));
   }
 
   return (
